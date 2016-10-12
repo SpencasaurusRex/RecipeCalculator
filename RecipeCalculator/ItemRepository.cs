@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class ItemRepository
 {
-    private Item item1;
+    private List<Item> items;
 
-    public ItemRepository(Item item)
+    public ItemRepository()
     {
-        Console.WriteLine(item.Name);
+        items = new List<Item>();
+    }
+
+    public void AddItem(Item i)
+    {
+        items.Add(i);
     }
 }
