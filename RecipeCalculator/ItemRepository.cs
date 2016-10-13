@@ -22,6 +22,6 @@ class ItemRepository
         {
             return selectedItem;
         }
-        throw new ArgumentException("The item {0} is not in the item list");
+        throw new ArgumentException("The item \"{0}\" is not in the item list");
     }
 }

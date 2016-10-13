@@ -2,6 +2,5 @@
 
 interface Loader
 {
-    void LoadItems(ItemRepository items);
-    void LoadRecipes(ItemRepository items, RecipeRepository recipes);
+    void Load(ItemRepository items, RecipeRepository recipes);
 }

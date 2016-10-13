@@ -2,23 +2,52 @@
 
 class Recipe
 {
-    public Item[] Products
+    public static RecipeRepository Repository
+    {
+        set;
+        get;
+    }
+
+    public ItemStack[] Products
     {
         get;
     }
 
-    public Item[] Ingredients
+    public ItemStack[] Ingredients
     {
         get;
     }
 
-    public Recipe(Item product, params Item[] ingredients) : this(new Item[] { product }, ingredients)
+    public Recipe(Item product, params ItemStack[] ingredients) : this(product * 1, ingredients)
     {
     }
 
-    public Recipe(Item[] products, params Item[] ingredients)
+    public Recipe(ItemStack product, params ItemStack[] ingredients) : this(new ItemStack[] { product }, ingredients)
+    {
+    }
+
+    public Recipe(ItemStack[] products, params ItemStack[] ingredients)
     {
         Products = products;
         Ingredients = ingredients;
+        if (Repository != null)
+        {
+            Repository.Add(this);
+        }
+    }
+
+    public override string ToString()
+    {
+        string buffer = "Products:\r\n";
+        foreach (ItemStack product in Products)
+        {
+            buffer += "\t" + product.ToString() + "\r\n";
+        }
+        buffer += "Ingredients:\r\n";
+        foreach (ItemStack ingredient in Ingredients)
+        {
+            buffer += "\t" + ingredient.ToString() + "\r\n";
+        }
+        return buffer;
     }
 }

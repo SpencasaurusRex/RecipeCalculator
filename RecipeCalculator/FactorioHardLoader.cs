@@ -2,17 +2,23 @@
 
 class FactorioHardLoader : Loader
 {
-    public void LoadItems(ItemRepository items)
+    public void Load(ItemRepository items, RecipeRepository recipes)
     {
-        items.Add(new Item("Iron Plate"));
-        items.Add(new Item("Copper Plate"));
-        items.Add(new Item("Iron Gear Wheel"));
-        items.Add(new Item("Copper Cable"));
-        items.Add(new Item("Electronic Circuit"));
-    }
+        Item.Repository = items;
 
-    public void LoadRecipes(ItemRepository items, RecipeRepository recipes)
-    {
+        Item iron = new Item("Iron Plate");
+        Item copper = new Item("Copper Plate");
+        Item gear = new Item("Iron Gear Wheel");
+        Item cc = new Item("Copper Cable");
+        Item ec = new Item("Electronic Circuit");
+        Item t = new Item("Time");
 
+        Recipe.Repository = recipes;
+
+        new Recipe(gear, 2 * iron, .5f * t);
+        new Recipe(ec, 1 * iron, 3 * cc, .5f * t);
+
+        Item.Repository = null;
+        Recipe.Repository = null;
     }
 }

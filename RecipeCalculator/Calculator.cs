@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 class Calculator
 {
     static void Main(string[] args)
@@ -12,7 +14,13 @@ class Calculator
     public Calculator()
     {
         FactorioHardLoader loader = new FactorioHardLoader();
-        loader.LoadItems(items);
-        loader.LoadRecipes(items, recipes);
+        items = new ItemRepository();
+        recipes = new RecipeRepository();
+
+        loader.Load(items, recipes);
+
+        Item gear = items.Get("Iron Gear Wheel");
+        List<Recipe> r = recipes.GetRecipesFor(gear);
+        Console.WriteLine(r[0].ToString());
     }
 }
