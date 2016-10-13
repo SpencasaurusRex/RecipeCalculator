@@ -2,7 +2,7 @@
 
 class Recipe
 {
-    public Item Subject
+    public Item[] Products
     {
         get;
     }
@@ -12,9 +12,13 @@ class Recipe
         get;
     }
 
-    public Recipe(Item subject, params Item[] ingredients)
+    public Recipe(Item product, params Item[] ingredients) : this(new Item[] { product }, ingredients)
     {
-        Subject = subject;
+    }
+
+    public Recipe(Item[] products, params Item[] ingredients)
+    {
+        Products = products;
         Ingredients = ingredients;
     }
 }
