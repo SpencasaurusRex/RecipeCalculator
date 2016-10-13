@@ -10,7 +10,7 @@ class RecipeRepository
         _recipes = new List<Recipe>();
     }
 
-    public void AddRecipe(Recipe r)
+    public void Add(Recipe r)
     {
         _recipes.Add(r);
     }

@@ -1,16 +1,18 @@
 ﻿using System;
 class Calculator
 {
-    private ItemRepository _itemRepo;
-
     static void Main(string[] args)
     {
         Console.WriteLine("Starting Recipe Calculator");
         new Calculator();
     }
+    private ItemRepository items;
+    private RecipeRepository recipes;
 
     public Calculator()
     {
-        _itemRepo = new ItemRepository();
+        FactorioHardLoader loader = new FactorioHardLoader();
+        loader.LoadItems(items);
+        loader.LoadRecipes(items, recipes);
     }
 }
