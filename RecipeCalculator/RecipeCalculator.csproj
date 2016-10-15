@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
-    <Compile Include="FactorioHardLoader.cs" />
+    <Compile Include="FactorioCsvLoader.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemRepository.cs" />
     <Compile Include="ItemStack.cs" />

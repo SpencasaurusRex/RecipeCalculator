@@ -1,4 +1,4 @@
-file = io.open("recipes.csv", "w")
+file = io.open("../resources/recipes.csv", "w")
 io.output(file);
 
 data = {}
@@ -8,13 +8,19 @@ data["extend"] = function (data, t)
 		if energy == nil then
 			energy = .5
 		end
-		io.write(recipe["name"] .. ',energy,'..energy..'\n')
+		resultCount = recipe["result_count"]
+		if resultCount == nil then
+			resultCount = 1
+		end
+		io.write(recipe["name"] .. ',' .. resultCount .. ',energy,'..energy..'\n')
 		for i, component in ipairs(recipe["ingredients"]) do
 			cname = component[1] or component["name"]
 			camt = component[2] or component["amount"]
-			io.write(recipe["name"] .. ',' .. cname .. ',' .. camt, '\n')
-        end
-    end
+			io.write(recipe["name"] .. ',' .. resultCount .. ',' .. cname .. ',' .. camt, '\n')	
+		end
+		energy = nil
+		resultCount = nil
+	end
 end
 
 files = {

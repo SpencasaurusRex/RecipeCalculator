@@ -9,12 +9,18 @@ class ItemStack
 
     public float Number
     {
+        set;
         get;
     }
 
     public static ItemStack operator *(ItemStack itemStack, float number)
     {
         return new ItemStack(itemStack.Item, itemStack.Number * number);
+    }
+
+    public static ItemStack operator *(float number, ItemStack itemStack)
+    {
+        return itemStack * number;
     }
 
     public ItemStack(Item item, float number)

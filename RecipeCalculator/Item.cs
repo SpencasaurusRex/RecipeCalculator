@@ -44,7 +44,12 @@ class Item
 
     public override bool Equals(object obj)
     {
-        return base.Equals(obj);
+        if (obj == null || !(obj is Item))
+        {
+            return false;
+        }
+        Item item = (Item)obj;
+        return item == this;
     }
 
     public override int GetHashCode()

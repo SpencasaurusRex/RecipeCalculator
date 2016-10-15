@@ -15,13 +15,15 @@ class ItemRepository
         items.Add(i.Name, i);
     }
 
-    public Item Get(String name)
+    public bool Get(String name, out Item get)
     {
         Item selectedItem;
         if (items.TryGetValue(name, out selectedItem))
         {
-            return selectedItem;
+            get = selectedItem;
+            return true;
         }
-        throw new ArgumentException("The item \"{0}\" is not in the item list");
+        get = null;
+        return false;
     }
 }
