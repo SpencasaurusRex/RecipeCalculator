@@ -1,43 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 
-class RecipeRepository
+namespace RecipeCalculator
 {
-    private List<Recipe> recipes;
-    public static RecipeRepository Repository
+    class RecipeRepository
     {
-        set;
-        get;
-    }
-
-    public RecipeRepository()
-    {
-        recipes = new List<Recipe>();
-    }
-
-    public void Add(Recipe r)
-    {
-        recipes.Add(r);
-    }
-
-    public List<Recipe> GetRecipesFor(Item item)
-    {
-        List<Recipe> validRecipes = new List<Recipe>();
-        foreach (Recipe r in recipes)
+        private List<Recipe> recipes;
+        public static RecipeRepository Repository
         {
-            foreach (ItemStack items in r.Products)
+            set;
+            get;
+        }
+
+        public RecipeRepository()
+        {
+            recipes = new List<Recipe>();
+        }
+
+        public void Add(Recipe r)
+        {
+            recipes.Add(r);
+        }
+
+        public List<Recipe> GetRecipesFor(Item item)
+        {
+            List<Recipe> validRecipes = new List<Recipe>();
+            foreach (Recipe r in recipes)
             {
-                if (items.Item == item)
+                foreach (ItemStack items in r.Products)
                 {
-                    validRecipes.Add(r);
+                    if (items.Item == item)
+                    {
+                        validRecipes.Add(r);
+                    }
                 }
             }
+            return validRecipes;
         }
-        return validRecipes;
-    }
 
-    public Recipe[] GetAll()
-    {
-        return recipes.ToArray();
+        public Recipe[] GetAll()
+        {
+            return recipes.ToArray();
+        }
     }
 }

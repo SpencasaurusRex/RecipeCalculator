@@ -1,6 +1,7 @@
-﻿using System;
-
-interface Loader
+﻿namespace RecipeCalculator
 {
-    void Load(ItemRepository items, RecipeRepository recipes);
+    interface Loader
+    {
+        void Load(ItemRepository items, RecipeRepository recipes);
+    }
 }

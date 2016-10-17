@@ -1,64 +1,67 @@
 ﻿using System;
 
-class Item
+namespace RecipeCalculator
 {
-    public static ItemRepository Repository
+    class Item
     {
-        set;
-        get;
-    }
-
-    public String Name
-    {
-        get;
-    }
-
-    public Item(String name)
-    {
-        Name = name;
-        if (Repository != null)
+        public static ItemRepository Repository
         {
-            Repository.Add(this);
+            set;
+            get;
         }
-    }
 
-    public static ItemStack operator *(Item item, float number)
-    {
-        return new ItemStack(item, number);
-    }
-
-    public static ItemStack operator *(float number, Item item)
-    {
-        return item * number;
-    }
-
-    public static bool operator ==(Item a, Item b)
-    {
-        return string.Equals(a.Name, b.Name);
-    }
-
-    public static bool operator !=(Item a, Item b)
-    {
-        return !string.Equals(a.Name, b.Name);
-    }
-
-    public override bool Equals(object obj)
-    {
-        if (obj == null || !(obj is Item))
+        public String Name
         {
-            return false;
+            get;
         }
-        Item item = (Item)obj;
-        return item == this;
-    }
 
-    public override int GetHashCode()
-    {
-        return base.GetHashCode() * Name.GetHashCode();
-    }
+        public Item(String name)
+        {
+            Name = name;
+            if (Repository != null)
+            {
+                Repository.Add(this);
+            }
+        }
 
-    public override string ToString()
-    {
-        return Name;
+        public static ItemStack operator *(Item item, float number)
+        {
+            return new ItemStack(item, number);
+        }
+
+        public static ItemStack operator *(float number, Item item)
+        {
+            return item * number;
+        }
+
+        public static bool operator ==(Item a, Item b)
+        {
+            return string.Equals(a.Name, b.Name);
+        }
+
+        public static bool operator !=(Item a, Item b)
+        {
+            return !string.Equals(a.Name, b.Name);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Item))
+            {
+                return false;
+            }
+            Item item = (Item)obj;
+            return item == this;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() * Name.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

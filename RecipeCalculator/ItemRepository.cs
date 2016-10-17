@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 
-class ItemRepository
+namespace RecipeCalculator
 {
-    private Dictionary<String, Item> items;
-
-    public ItemRepository()
+    class ItemRepository
     {
-        items = new Dictionary<String, Item>();
-    }
+        private Dictionary<String, Item> items;
 
-    public void Add(Item i)
-    {
-        items.Add(i.Name, i);
-    }
-
-    public bool Get(String name, out Item get)
-    {
-        Item selectedItem;
-        if (items.TryGetValue(name, out selectedItem))
+        public ItemRepository()
         {
-            get = selectedItem;
-            return true;
+            items = new Dictionary<String, Item>();
         }
-        get = null;
-        return false;
+
+        public void Add(Item i)
+        {
+            items.Add(i.Name, i);
+        }
+
+        public bool Get(String name, out Item get)
+        {
+            Item selectedItem;
+            if (items.TryGetValue(name, out selectedItem))
+            {
+                get = selectedItem;
+                return true;
+            }
+            get = null;
+            return false;
+        }
     }
 }
