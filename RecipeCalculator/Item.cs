@@ -67,6 +67,7 @@ namespace RecipeCalculator
 
         public override string ToString()
         {
+            return LabelName == null ? Name : LabelName;
         }
     }
 }

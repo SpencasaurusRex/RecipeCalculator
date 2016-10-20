@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace RecipeCalculator
 {
-    class FactorioCsvLoader : Loader
+    static class FactorioCsvLoader
     {
-        public void Load(ItemRepository items, RecipeRepository recipes)
+        public static void Load(ItemRepository items, RecipeRepository recipes)
         {
             Item.Repository = items;
             Recipe.Repository = recipes;
@@ -34,7 +34,7 @@ namespace RecipeCalculator
             }
             catch (FileNotFoundException e)
             {
-                Console.Error.WriteLine("Couldnt find file: " + e.FileName);
+                Console.Error.WriteLine("Missing recipe file: " + e.FileName);
             }
             catch (Exception e)
             {
@@ -43,14 +43,14 @@ namespace RecipeCalculator
             Done();
         }
 
-        private void LoadRecipe(string product, float pcount, string ingredient, float icount)
+        private static void LoadRecipe(string product, float pcount, string ingredient, float icount)
         {
             Recipe r = GetRecipe(product, pcount);
             Item ingredients = GetItem(ingredient);
             r.AddIngredients(ingredients * icount);
         }
 
-        private Recipe GetRecipe(string name, float pcount)
+        private static Recipe GetRecipe(string name, float pcount)
         {
             Item product = GetItem(name);
             List<Recipe> recipes = Recipe.Repository.GetRecipesFor(product);
@@ -69,7 +69,7 @@ namespace RecipeCalculator
             }
         }
 
-        private Item GetItem(string name)
+        private static Item GetItem(string name)
         {
             Item existingItem;
             if (Item.Repository.Get(name, out existingItem))
@@ -79,7 +79,7 @@ namespace RecipeCalculator
             return new Item(name);
         }
 
-        private void Done()
+        private static void Done()
         {
             Item.Repository = null;
             Recipe.Repository = null;
