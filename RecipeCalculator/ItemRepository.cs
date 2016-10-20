@@ -19,14 +19,7 @@ namespace RecipeCalculator
 
         public bool Get(String name, out Item get)
         {
-            Item selectedItem;
-            if (items.TryGetValue(name, out selectedItem))
-            {
-                get = selectedItem;
-                return true;
-            }
-            get = null;
-            return false;
+            return items.TryGetValue(name, out get);
         }
     }
 }

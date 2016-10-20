@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace RecipeCalculator
 {
@@ -41,6 +42,22 @@ namespace RecipeCalculator
         public Recipe[] GetAll()
         {
             return recipes.ToArray();
+        }
+
+        public TreeNode Breakdown(ItemStack i)
+        {
+            List<Recipe> itemRecipes = GetRecipesFor(i.Item);
+            TreeNode node = new TreeNode(i.ToString());
+            if (itemRecipes.Count == 1)
+            {
+                Recipe recipe = itemRecipes[0];
+                foreach (ItemStack ingredient in recipe.Ingredients)
+                {
+                    TreeNode subNode = Breakdown(ingredient * (i.Number / recipe.Products[0].Number));
+                    node.Nodes.Add(subNode);
+                }
+            }
+            return node;
         }
     }
 }

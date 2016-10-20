@@ -15,6 +15,12 @@ namespace RecipeCalculator
             get;
         }
 
+        public String LabelName
+        {
+            set;
+            get;
+        }
+
         public Item(String name)
         {
             Name = name;
@@ -61,7 +67,6 @@ namespace RecipeCalculator
 
         public override string ToString()
         {
-            return Name;
         }
     }
 }

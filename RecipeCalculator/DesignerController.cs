@@ -1,19 +1,20 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace RecipeCalculator
 {
     class DesignerController
     {
-        private DesignerView view;
+        private ItemRepository items;
+        private RecipeRepository recipes;
 
-        public DesignerController(DesignerView view)
+        public DesignerController(ItemRepository items, RecipeRepository recipes)
         {
-            this.view = view;
-        }
-
-        public void AttemptExit()
-        {
-            // TODO add check for unsaved files
-            view.Close();
+            this.items = items;
+            this.recipes = recipes;
         }
     }
 }

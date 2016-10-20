@@ -12,6 +12,6 @@ static class Startup
     {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new DesignerView());
+        Application.Run(new MainView());
     }
 }

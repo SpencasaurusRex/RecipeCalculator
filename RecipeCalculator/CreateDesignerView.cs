@@ -10,19 +10,16 @@ using System.Windows.Forms;
 
 namespace RecipeCalculator
 {
-    public partial class DesignerView : Form
+    public partial class CreateDesignerView : Form
     {
-        private DesignerController controller;
-
-        public DesignerView()
+        public CreateDesignerView()
         {
-            controller = new DesignerController(this);
             InitializeComponent();
         }
 
-        private void ExitMenuItemClicked(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            controller.AttemptExit();
+
         }
     }
 }
